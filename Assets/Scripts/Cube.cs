@@ -4,6 +4,7 @@ using UnityEngine;
 public class Cube : MonoBehaviour
 {
     [SerializeField] private float _startSeparationChance = 1f;
+    [SerializeField] private MinMaxRange _newCubesCount = new(2, 7);
 
     private float _separationChance;
     private RandomColorChanger _randomColorChanger;
@@ -40,7 +41,8 @@ public class Cube : MonoBehaviour
 
     private Cube[] SpawnCubes()
     {
-        int newCubesCount = Random.Range(2, 7);
+        int newCubesCount = Random.Range(_newCubesCount.MinInclusive,
+            _newCubesCount.MaxExclusive);
 
         Cube[] cubes = new Cube[newCubesCount];
 
