@@ -29,10 +29,11 @@ public class Cube : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Init(Vector3 prevScale, float prevSeparationChance)
+    public void Init(Vector3 prevScale, float prevSeparationChance, Explodable prevExplodable)
     {
         transform.localScale = prevScale / 2;
         _separationChance = prevSeparationChance / 2;
+        Explodable.Init(prevExplodable);
 
         _randomColorChanger.Change();
     }
@@ -47,8 +48,7 @@ public class Cube : MonoBehaviour
         {
             cubes[i] = Instantiate(this, transform.parent);
 
-            cubes[i].Init(transform.localScale, _separationChance);
-            cubes[i].Explodable.Init(Explodable);
+            cubes[i].Init(transform.localScale, _separationChance, Explodable);
         }
 
         return cubes;
