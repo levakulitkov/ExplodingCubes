@@ -23,8 +23,6 @@ public class Cube : MonoBehaviour
     {
         if (_separationChance > Random.Range(0, 1f))
             Explodable.Separate(SpawnCubes());
-        else
-            Explodable.Explode();
 
         Destroy(gameObject);
     }
